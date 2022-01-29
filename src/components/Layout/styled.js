@@ -22,7 +22,7 @@ export const Nav = styled.nav`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 6rem;
+  width: 5rem;
   height: 100vh;
   position: fixed;
   top: 5rem;
