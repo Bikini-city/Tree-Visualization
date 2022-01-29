@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+import * as Style from './AppStyle';
 
 function App() {
   return (
     <div>
-      <h2>Welcome to React App</h2>
+      <Style.Title>Welcome to React App</Style.Title>
       <h3>Date : {new Date().toDateString()}</h3>
     </div>
   );
