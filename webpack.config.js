@@ -15,6 +15,7 @@ module.exports = {
     },
     port: 3000,
     compress: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
