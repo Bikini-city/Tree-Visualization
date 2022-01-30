@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Map from '../components/UI/Map';
 
-function Main(props) {
-  return <div>main</div>;
+function Main() {
+  const [map, setMap] = useState();
+
+  return <Map getMap={setMap} />;
 }
 
 export default Main;
