@@ -26,10 +26,6 @@ export const Header = styled.header`
 export const Nav = styled.nav`
   grid-area: nav;
   padding: 2rem 0;
-  gap: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   width: 100%;
   height: 100%;
   z-index: 500;
@@ -41,7 +37,16 @@ export const IconWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
   cursor: pointer;
+
+  a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const Children = styled.div`
