@@ -6,7 +6,7 @@ function Layout({ children }) {
   return (
     <Style.Container>
       <Style.Header>
-        <Icon icon="purdue" width="5rem" />
+        <Icon icon="purdue" width="7rem" />
       </Style.Header>
       <Style.Nav>
         <Style.IconWrapper>
@@ -16,7 +16,7 @@ function Layout({ children }) {
           <Icon color="#9e7715" icon="statistics" width="70%" />
         </Style.IconWrapper>
       </Style.Nav>
-      {children}
+      <Style.Children>{children}</Style.Children>
     </Style.Container>
   );
 }
