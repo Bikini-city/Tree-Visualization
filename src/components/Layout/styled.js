@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import * as Color from '../../style/color';
 
 export const Container = styled.main`
   width: 100vw;
@@ -12,6 +13,7 @@ export const Container = styled.main`
 `;
 
 export const Header = styled.header`
+  position: relative;
   grid-area: header;
   display: flex;
   align-items: center;
@@ -19,8 +21,19 @@ export const Header = styled.header`
   height: 100%;
   padding-left: 0.5rem;
   z-index: 1000;
-  background-color: #fff;
-  border-bottom: 2px solid #9e7715;
+  background-color: ${Color.white};
+  border-bottom: 2px solid ${Color.gold};
+`;
+
+export const Title = styled.h1`
+  position: absolute;
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: ${Color.gold};
+  user-select: none;
 `;
 
 export const Nav = styled.nav`
@@ -29,8 +42,8 @@ export const Nav = styled.nav`
   width: 100%;
   height: 100%;
   z-index: 500;
-  background-color: #fff;
-  border-right: 2px solid #9e7715;
+  background-color: ${Color.white};
+  border-right: 2px solid ${Color.gold};
 `;
 
 export const IconWrapper = styled.div`

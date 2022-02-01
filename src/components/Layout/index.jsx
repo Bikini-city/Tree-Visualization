@@ -11,6 +11,7 @@ function Layout({ children }) {
     <Style.Container>
       <Style.Header>
         <Icon icon="purdue" width="7rem" />
+        <Style.Title>Fallen Tree Visualization</Style.Title>
       </Style.Header>
       <Style.Nav>
         <Style.IconWrapper>
