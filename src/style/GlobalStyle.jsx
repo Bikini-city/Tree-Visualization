@@ -7,7 +7,7 @@ function GlobalStyle() {
       styles={css`
         * {
           box-sizing: border-box;
-          font-family: 'Comfortaa', cursive;
+          font-family: 'Noto Sans', sans-serif;
         }
         html,
         body,
