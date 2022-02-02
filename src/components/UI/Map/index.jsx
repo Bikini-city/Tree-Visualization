@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import ReactMapGL from 'react-map-gl';
+import Marker from './Marker';
 import * as Style from './styled';
 
 const LNG = -86.89871737888747;
 const LAT = 40.41866254968954;
 const ZOOM = 12;
 
-function Map({ children, getMap }) {
+function Map({ children, getMap, markers, onClickMarker }) {
   const [viewport, setViewport] = useState({
     latitude: LAT,
     longitude: LNG,
@@ -42,7 +43,11 @@ function Map({ children, getMap }) {
         onViewportChange={handleViewportChange}
         mapStyle="mapbox://styles/mapbox/satellite-v9"
         mapboxApiAccessToken={process.env.MAPBOX_KEY}
-      />
+      >
+        {markers.map((marker) => (
+          <Marker key={marker.lng} lng={marker.lng} lat={marker.lat} onClickMarker={onClickMarker} />
+        ))}
+      </ReactMapGL>
       {children}
     </Style.Container>
   );
