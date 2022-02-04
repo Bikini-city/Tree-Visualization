@@ -21,5 +21,8 @@ export const icon = () => (
     <IconItem>
       <Icon icon="statistics" />
     </IconItem>
+    <IconItem>
+      <Icon icon="tree" />
+    </IconItem>
   </IconList>
 );
