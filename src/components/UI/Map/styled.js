@@ -10,6 +10,11 @@ export const Container = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
+
+  .mapboxgl-ctrl-logo,
+  .mapboxgl-ctrl-attrib-inner {
+    display: none;
+  }
 `;
 
 /**
