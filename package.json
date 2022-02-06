@@ -25,6 +25,7 @@
   "dependencies": {
     "@emotion/react": "^11.5.0",
     "@emotion/styled": "^11.3.0",
+    "axios": "^0.25.0",
     "dotenv-webpack": "^7.1.0",
     "mapbox-gl": "^2.7.0",
     "react": "^17.0.2",
