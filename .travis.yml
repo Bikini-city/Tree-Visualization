@@ -1,0 +1,14 @@
+sudo: required
+
+language: node_js
+node_js:
+  - 'stable'
+
+before_install:
+  - echo "start testing"
+
+script:
+  - npm test
+
+after_success:
+  - echo "test Success"
