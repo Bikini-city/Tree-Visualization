@@ -10,12 +10,13 @@ export const getDatas = async () => {
   return response.data;
 };
 
-export const createDatas = async ({ dataset, lat, lng }) => {
+export const createDatas = async ({ dataset, date, lat, lng }) => {
   const response = await axios({
     url: '/datas',
     method: 'POST',
     data: {
       dataset,
+      date,
       lat,
       lng,
     },
