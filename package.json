@@ -8,6 +8,7 @@
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
+    "lint": "eslint --ext .js --ignore-path .gitignore .",
     "test": "jest",
     "test-coverage": "jest --coverage"
   },
