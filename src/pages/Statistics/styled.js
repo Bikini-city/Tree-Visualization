@@ -87,11 +87,15 @@ export const DateLabel = styled.label`
 `;
 
 export const GraphWrapper = styled.div`
+  padding-top: 7%;
   grid-area: graph;
 `;
 
 export const ChartWrapper = styled.div`
   grid-area: chart;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CountWrapper = styled.div`
@@ -123,7 +127,11 @@ export const CountValue = styled.span`
   font-size: 3rem;
 `;
 
-export const RangeWrapper = styled.div``;
+export const RangeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+`;
 
 export const RangeInput = styled.input`
   -webkit-appearance: none;
@@ -150,4 +158,10 @@ export const RangeInput = styled.input`
     cursor: pointer;
     border: none;
   }
+`;
+
+export const RangeText = styled.span`
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: ${Color.gold};
 `;

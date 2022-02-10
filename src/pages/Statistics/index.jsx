@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import DatePicker from 'react-datepicker';
+import makePieChart from 'arc-pie-chart';
 import DateButton from '../../components/UI/DateButton';
 import * as Style from './styled';
+import { dummyData } from '../../common/data';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
+const DATA_DEPTH = 3;
+const ARC_CHART_SIZE = 430;
+const RANGE_MAPPINDG = {
+  1: '10D',
+  2: '1M',
+  3: '3M',
+  4: '6M',
+  5: '1Y',
+};
+
 function Statistics() {
+  const svg = useRef(null);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
+  const [range, setRange] = useState(3);
 
   const changeFromDate = (date) => {
     setFromDate(date);
@@ -19,6 +33,12 @@ function Statistics() {
     }
     setToDate(date);
   };
+
+  useEffect(() => {
+    if (svg.current) {
+      svg.current.appendChild(makePieChart(dummyData, DATA_DEPTH, ARC_CHART_SIZE));
+    }
+  }, []);
 
   return (
     <Style.Container>
@@ -37,10 +57,11 @@ function Statistics() {
       </Style.TitleWrapper>
       <Style.GraphWrapper>
         <Style.RangeWrapper>
-          <Style.RangeInput type="range" min={0} max={5} />
+          <Style.RangeInput type="range" min={1} max={5} value={range} onChange={(e) => setRange(e.target.value)} />
+          <Style.RangeText>{RANGE_MAPPINDG[range]}</Style.RangeText>
         </Style.RangeWrapper>
       </Style.GraphWrapper>
-      <Style.ChartWrapper />
+      <Style.ChartWrapper ref={svg} />
       <Style.CountWrapper>
         <Style.CountList>
           <Style.CountItem>
