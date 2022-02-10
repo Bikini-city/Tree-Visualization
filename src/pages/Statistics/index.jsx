@@ -35,7 +35,11 @@ function Statistics() {
           </Style.DateItem>
         </Style.DateList>
       </Style.TitleWrapper>
-      <Style.GraphWrapper />
+      <Style.GraphWrapper>
+        <Style.RangeWrapper>
+          <Style.RangeInput type="range" min={0} max={5} />
+        </Style.RangeWrapper>
+      </Style.GraphWrapper>
       <Style.ChartWrapper />
       <Style.CountWrapper>
         <Style.CountList>
