@@ -6,6 +6,6 @@ describe('Page/Statistics', () => {
   it('rendering test', () => {
     const component = render(<StatisticsPage />);
 
-    component.getByText('statistics');
+    component.getByText('Statistics');
   });
 });
