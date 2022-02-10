@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import * as Color from '../../style/color';
 
 export const Container = styled.div`
   width: 100%;
@@ -120,4 +121,33 @@ export const CountTitle = styled.h3`
 
 export const CountValue = styled.span`
   font-size: 3rem;
+`;
+
+export const RangeWrapper = styled.div``;
+
+export const RangeInput = styled.input`
+  -webkit-appearance: none;
+  opacity: 0.7;
+  width: 30rem;
+  height: 3px;
+  background-color: ${Color.black};
+  outline: none;
+  border: none;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${Color.gold};
+    cursor: pointer;
+  }
+  &::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: ${Color.gold};
+    cursor: pointer;
+    border: none;
+  }
 `;
