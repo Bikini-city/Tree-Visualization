@@ -89,6 +89,9 @@ export const DateLabel = styled.label`
 export const GraphWrapper = styled.div`
   padding-top: 7%;
   grid-area: graph;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const ChartWrapper = styled.div`

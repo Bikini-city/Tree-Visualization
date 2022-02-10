@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import makePieChart from 'arc-pie-chart';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import DateButton from '../../components/UI/DateButton';
 import * as Style from './styled';
-import { dummyData } from '../../common/data';
+import { chartDummyData, graphDummyData } from '../../common/data';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -36,7 +37,7 @@ function Statistics() {
 
   useEffect(() => {
     if (svg.current) {
-      svg.current.appendChild(makePieChart(dummyData, DATA_DEPTH, ARC_CHART_SIZE));
+      svg.current.appendChild(makePieChart(chartDummyData, DATA_DEPTH, ARC_CHART_SIZE));
     }
   }, []);
 
@@ -60,6 +61,25 @@ function Statistics() {
           <Style.RangeInput type="range" min={1} max={5} value={range} onChange={(e) => setRange(e.target.value)} />
           <Style.RangeText>{RANGE_MAPPINDG[range]}</Style.RangeText>
         </Style.RangeWrapper>
+        <LineChart
+          width={800}
+          height={300}
+          data={graphDummyData}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        </LineChart>
       </Style.GraphWrapper>
       <Style.ChartWrapper ref={svg} />
       <Style.CountWrapper>
