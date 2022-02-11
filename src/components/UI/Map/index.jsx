@@ -45,7 +45,7 @@ function Map({ children, getMap, markers, onClickMarker }) {
         mapboxApiAccessToken={process.env.MAPBOX_KEY}
       >
         {markers.map((marker) => (
-          <Marker key={marker.lng} lng={marker.lng} lat={marker.lat} onClickMarker={onClickMarker} />
+          <Marker key={marker.lng} lng={marker.lng} lat={marker.lat} onClickMarker={() => onClickMarker(marker.id)} />
         ))}
       </ReactMapGL>
       {children}

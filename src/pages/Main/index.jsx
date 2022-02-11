@@ -4,12 +4,11 @@ import Icon from '../../components/UI/Icon';
 import { getDatas } from '../../api/data';
 import * as Style from './styled';
 import * as Color from '../../style/color';
-
-// FIXME: remove
-const DUMMY_MARKERS = [{ lng: -86.89871737888747, lat: 40.41866254968954 }];
+import MarkerModal from '../../components/UI/MarkerModal';
 
 function Main() {
-  const [dataset, setDataset] = useState([]);
+  const [dataset, setDataset] = useState([{ id: 1, lng: -86.89871737888747, lat: 40.41866254968954, src: '' }]);
+  const [selectedData, setSelectedData] = useState();
   const [map, setMap] = useState();
   const [showTree, setShowTree] = useState(false);
 
@@ -22,9 +21,19 @@ function Main() {
     initDataset();
   }, []);
 
+  const onClickMarker = (id) => {
+    const data = dataset.find((d) => d.id === id);
+    setSelectedData(data);
+  };
+
+  const closeModal = () => {
+    setSelectedData(undefined);
+  };
+
   return (
     <Style.Container>
-      <Map getMap={setMap} markers={DUMMY_MARKERS} />
+      {selectedData && <MarkerModal data={selectedData} closeModal={closeModal} />}
+      <Map getMap={setMap} markers={dataset} onClickMarker={onClickMarker} />
       <Style.AddButton>
         <Icon icon="plus" />
       </Style.AddButton>
