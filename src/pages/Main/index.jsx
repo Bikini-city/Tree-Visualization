@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Map from '../../components/UI/Map';
+import CreateModal from '../../components/UI/CreateModal'
+
 import Icon from '../../components/UI/Icon';
 import { getDatas } from '../../api/data';
 import * as Style from './styled';
@@ -24,6 +26,7 @@ function Main() {
 
   return (
     <Style.Container>
+      <CreateModal />
       <Map getMap={setMap} markers={DUMMY_MARKERS} />
       <Style.AddButton>
         <Icon icon="plus" />
