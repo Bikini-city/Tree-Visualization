@@ -1,10 +1,18 @@
 import axios from 'axios';
 
+/**
+ * id : number
+ * lat : number
+ * lng : number
+ * src : string
+ * date: string
+ * broken : number
+ * down : number
+ */
 export const getDatas = async () => {
   const response = await axios({
     url: '/datas',
     method: 'GET',
-    data: {},
   });
 
   return response.data;
