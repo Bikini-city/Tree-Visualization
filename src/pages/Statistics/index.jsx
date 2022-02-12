@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import makePieChart from 'arc-pie-chart';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import { getDatas } from '../../api/data';
 import DateButton from '../../components/UI/DateButton';
 import * as Style from './styled';
-import { chartDummyData, graphDummyData } from '../../common/data';
+import { chartDummyData, graphDummyData, dd } from '../../common/data';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { makeDataToChartFormat } from '../../utils/data';
 
 const DATA_DEPTH = 3;
 const ARC_CHART_SIZE = 430;
@@ -20,9 +22,30 @@ const RANGE_MAPPINDG = {
 
 function Statistics() {
   const svg = useRef(null);
+  const [dataset, setDataset] = useState([]);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [range, setRange] = useState(3);
+
+  const initDataset = async () => {
+    const datasetFromServer = await getDatas();
+    setDataset(datasetFromServer);
+  };
+
+  useEffect(() => {
+    if (svg.current) {
+      // FIXME: dd를 실제 데이터로 변경
+      svg.current.appendChild(
+        makePieChart(
+          makeDataToChartFormat(dd, new Date('2020-01-01'), new Date('2020-04-12'), 30),
+          DATA_DEPTH,
+          ARC_CHART_SIZE,
+        ),
+      );
+    }
+
+    initDataset();
+  }, []);
 
   const changeFromDate = (date) => {
     setFromDate(date);
@@ -34,12 +57,6 @@ function Statistics() {
     }
     setToDate(date);
   };
-
-  useEffect(() => {
-    if (svg.current) {
-      svg.current.appendChild(makePieChart(chartDummyData, DATA_DEPTH, ARC_CHART_SIZE));
-    }
-  }, []);
 
   return (
     <Style.Container>
