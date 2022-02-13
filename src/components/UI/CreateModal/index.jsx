@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ModalContainer from '../../Container/ModalContainer';
 import * as Style from './styled';
+import { createDatas } from '../../../api/data';
 
 function CreateModal() {
     const [userFile, setUserFile] = useState({
@@ -9,7 +10,7 @@ function CreateModal() {
     });
 
     const [userData, setUserData] = useState({
-        date: new Date(),
+        date: null,
         lng: 0,
         lat: 0
     });
@@ -31,13 +32,16 @@ function CreateModal() {
           reader.readAsDataURL(file);
         }
     };
-
+            
+    let fileExt = userFile.file[0]?.name.split('.').pop().toLowerCase();
+    let extList = ["mp4", "jpg", "png", "jpeg"];
     let preview = null;
-    if (userFile.file.length !== 0) {
+
+    if ((userFile.file.length !== 0) && extList.includes(fileExt)) {
         preview = userFile.file[0]?.type.includes("image/") ? (
-            <Style.ImgFile src={userFile.previewURL} />
+            <Style.ImgFile name="dataset" src={userFile.previewURL} />
         ) : (
-            <Style.VideoFile src={userFile.previewURL} controls/>
+            <Style.VideoFile name="dataset" src={userFile.previewURL} controls/>
         );
     }
 
@@ -46,13 +50,25 @@ function CreateModal() {
             ...userData,
             [key]: e.target.value
         });
-        console.log(userData.date);
+    };
+
+    const createDataset = () => {
+        const formData = new FormData();
+        formData.append('dataset', userFile.file[0]);
+
+        const postData = {
+            dataset: formData,
+            date: userData.date,
+            lat: userData.lat,
+            lng: userData.lng
+          };
+          createDatas(postData);
     };
 
     return (
     <ModalContainer active>
         <Style.Container>
-            <Style.Form name="user-data" method="post" action="">
+            <Style.Form name="user-data" method="post">
                 <Style.FileContainer>
                     {preview}
                 </ Style.FileContainer>
@@ -69,19 +85,19 @@ function CreateModal() {
                 </Style.UploadBtn>
                 <Style.InputContainer>
                     <Style.UserData>
-                        <Style.userInputLabel htmlFor="date">Date </Style.userInputLabel >
-                        <Style.userInput type="date" id="date" value={userData.date} onChange={(e) => inputData(e, 'date')}/>
+                        <Style.userInputLabel htmlFor="date">Date</Style.userInputLabel >
+                        <Style.userInput type="date" id="date" name="date" value={userData.date} onChange={(e) => inputData(e, 'date')}/>
                     </Style.UserData>
                     <Style.UserData>
                         <Style.userInputLabel  htmlFor="lng">Longitude</Style.userInputLabel >
-                        <Style.userInput type="number" id="lng" value={userData.lng} onChange={(e) => inputData(e, 'lng')}/>
+                        <Style.userInput type="number" id="lng" name="lng" value={userData.lng} onChange={(e) => inputData(e, 'lng')}/>
                     </Style.UserData>
                     <Style.UserData>
                         <Style.userInputLabel  htmlFor="lat">Latitude</Style.userInputLabel >
-                        <Style.userInput type="number" id="lat" value={userData.lat} onChange={(e) => inputData(e, 'lat')}/>
+                        <Style.userInput type="number" id="lat" name="lat" value={userData.lat} onChange={(e) => inputData(e, 'lat')}/>
                     </Style.UserData>
                 </Style.InputContainer>
-                <Style.SubmitBtn type="submit" value="Submit"></Style.SubmitBtn>
+                <Style.SubmitBtn type="submit" value="Submit" onSubmit={createDataset}></Style.SubmitBtn>
             </Style.Form>
         </Style.Container>
     </ModalContainer>
