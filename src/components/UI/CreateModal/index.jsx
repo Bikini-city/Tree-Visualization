@@ -10,7 +10,7 @@ function CreateModal() {
     });
 
     const [userData, setUserData] = useState({
-        date: null,
+        date: "",
         lng: 0,
         lat: 0
     });

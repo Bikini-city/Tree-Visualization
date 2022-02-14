@@ -93,10 +93,16 @@ export const SubmitBtn = styled.input`
   border-radius: 15px;
   margin-top: 5px;
   border: 2px solid #CFB991;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  box-shadow: 1px 2px 0 rgb(0, 0, 0, 0.5);
 
   &:hover {
     background-color: #CFB991;
     cursor: pointer;
+  }
+
+  &:active { 
+    box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
+    position: relative; 
+    top:2px; 
   }
 `;
