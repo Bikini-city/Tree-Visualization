@@ -5,10 +5,11 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'r
 import { getDatas } from '../../api/data';
 import DateButton from '../../components/UI/DateButton';
 import * as Style from './styled';
+import * as Color from '../../style/color';
 import { chartDummyData, graphDummyData, dd } from '../../common/data';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import { makeDataToChartFormat } from '../../utils/data';
+import { makeDataToChartFormat, makeDataToGraphFormat } from '../../utils/data';
 
 const DATA_DEPTH = 3;
 const ARC_CHART_SIZE = 430;
@@ -81,7 +82,7 @@ function Statistics() {
         <LineChart
           width={800}
           height={300}
-          data={graphDummyData}
+          data={makeDataToGraphFormat(dd, new Date('2020-01-01'), new Date('2020-04-12'), 30)}
           margin={{
             top: 5,
             right: 30,
@@ -94,8 +95,8 @@ function Statistics() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="broken" stroke={Color.gold} activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="down" stroke={Color.black} activeDot={{ r: 8 }} />
         </LineChart>
       </Style.GraphWrapper>
       <Style.ChartWrapper ref={svg} />

@@ -46,9 +46,27 @@ export const makeDataToChartFormat = (dataset, fromDate, toDate, gap) => {
   return result;
 };
 
-// TODO: 구현하기
 export const makeDataToGraphFormat = (dataset, fromDate, toDate, gap) => {
   const dateGap = getDateGap(toDate, fromDate);
   if (dateGap < gap) return [];
-  return [];
+
+  const result = [];
+  const innerCount = Math.ceil(dateGap / gap);
+
+  new Array(innerCount).fill(0).forEach((_, index) => {
+    result.push({
+      name: `${index}`,
+      broken: 0,
+      down: 0,
+    });
+  });
+
+  dataset.forEach((data) => {
+    const gapOfDataAndFromDate = getDateGap(data.date, fromDate);
+    const index = Math.floor(gapOfDataAndFromDate / gap);
+    result[index].broken += data.broken;
+    result[index].down += data.down;
+  });
+
+  return result;
 };
