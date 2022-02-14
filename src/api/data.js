@@ -39,6 +39,7 @@ export const deleteDatas = async ({ dataId }) => {
     method: 'DELETE',
   });
 
+  console.log(response.data);
   return response.data;
 };
 
