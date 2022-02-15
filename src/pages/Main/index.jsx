@@ -9,10 +9,11 @@ import MarkerModal from '../../components/UI/MarkerModal';
 import CreateModal from '../../components/UI/CreateModal';
 
 function Main() {
-  const [dataset, setDataset] = useState([{ id: 1, lng: -86.89871737888747, lat: 40.41866254968954, src: '' }]);
+  const [dataset, setDataset] = useState([]);
   const [selectedData, setSelectedData] = useState();
   const [map, setMap] = useState();
   const [showTree, setShowTree] = useState(false);
+  const [createModalOpen, setCreateModalOpen] = useState(false);
 
   const initDataset = async () => {
     const datasetFromServer = await getDatas();
@@ -30,14 +31,15 @@ function Main() {
 
   const closeModal = () => {
     setSelectedData(undefined);
+    setCreateModalOpen(false);
   };
 
   return (
     <Style.Container>
       {selectedData && <MarkerModal data={selectedData} closeModal={closeModal} />}
-      <CreateModal />
+      {createModalOpen && <CreateModal closeModal={closeModal} />}
       <Map getMap={setMap} markers={dataset} onClickMarker={onClickMarker} />
-      <Style.AddButton>
+      <Style.AddButton onClick={() => setCreateModalOpen(!createModalOpen)}>
         <Icon icon="plus" />
       </Style.AddButton>
       <Style.TreeButton onClick={() => setShowTree(!showTree)}>

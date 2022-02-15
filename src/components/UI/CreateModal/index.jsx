@@ -3,7 +3,7 @@ import ModalContainer from '../../Container/ModalContainer';
 import * as Style from './styled';
 import { createDatas } from '../../../api/data';
 
-function CreateModal() {
+function CreateModal({ closeModal }) {
   const [userFile, setUserFile] = useState({
     file: [],
     previewURL: '',
@@ -71,7 +71,7 @@ function CreateModal() {
   };
 
   return (
-    <ModalContainer active>
+    <ModalContainer closeModal={closeModal}>
       <Style.Container>
         <Style.Form name="user-data" method="post">
           <Style.FileContainer>{getPreview()}</Style.FileContainer>
