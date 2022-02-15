@@ -8,9 +8,10 @@ function ModalContainer({ children, closeModal }) {
   return (
     modalTag &&
     ReactDOM.createPortal(
-      <Style.Overlay onClick={closeModal}>
+      <>
+        <Style.Overlay onClick={closeModal} />
         <Style.Container>{children}</Style.Container>
-      </Style.Overlay>,
+      </>,
       modalTag,
     )
   );
