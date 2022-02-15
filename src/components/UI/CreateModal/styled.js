@@ -27,7 +27,7 @@ export const FileContainer = styled.div`
   justify-content: center;
   width: 37rem;
   height: 21rem;
-  border: 2px solid #CFB991;
+  border: 2px solid #cfb991;
   margin-bottom: 5px;
 `;
 
@@ -35,7 +35,7 @@ export const UploadBtn = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #CFB991;
+  background-color: #cfb991;
   width: 10rem;
   height: 3rem;
   border-radius: 3px;
@@ -71,38 +71,36 @@ export const UserData = styled.div`
   align-items: left;
   justify-content: center;
   margin-right: 5px;
-`
+`;
 
-export const userInputLabel = styled.label`
-
-`
-export const userInput = styled.input`
+export const UserInputLabel = styled.label``;
+export const UserInput = styled.input`
   width: 11rem;
   border: none;
   border-bottom: 1px solid ${Color.gray};
 
-  &:focus{
+  &:focus {
     outline: none;
-    border-bottom: 2px solid #CFB991;
+    border-bottom: 2px solid #cfb991;
   }
-`
-export const SubmitBtn = styled.input`
+`;
+export const SubmitBtn = styled.button`
   width: 23rem;
   height: 3.5rem;
   background-color: white;
   border-radius: 15px;
   margin-top: 5px;
-  border: 2px solid #CFB991;
+  border: 2px solid #cfb991;
   box-shadow: 1px 2px 0 rgb(0, 0, 0, 0.5);
 
   &:hover {
-    background-color: #CFB991;
+    background-color: #cfb991;
     cursor: pointer;
   }
 
-  &:active { 
-    box-shadow: 1px 1px 0 rgb(0,0,0,0.5); 
-    position: relative; 
-    top:2px; 
+  &:active {
+    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
+    position: relative;
+    top: 2px;
   }
 `;
