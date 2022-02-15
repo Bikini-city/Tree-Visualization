@@ -2,40 +2,32 @@ import styled from '@emotion/styled';
 import * as Color from '../../../style/color';
 
 export const Container = styled.div`
-  width: 40rem;
-  height: 40rem;
+  width: 50rem;
+  height: 50rem;
   border: 1px solid ${Color.gray};
   border-radius: 3px;
   background-color: ${Color.white};
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Form = styled.div`
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  height: 36rem;
+  justify-content: space-around;
 `;
 
 export const FileContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 37rem;
-  height: 21rem;
-  border: 2px solid #cfb991;
-  margin-bottom: 5px;
+  width: 45rem;
+  height: 25rem;
+  border: 2px solid ${Color.lightgold};
 `;
 
 export const UploadBtn = styled.label`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #cfb991;
+  background-color: ${Color.lightgold};
   width: 10rem;
   height: 3rem;
   border-radius: 3px;
@@ -61,11 +53,9 @@ export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 37rem;
 `;
 
 export const UserData = styled.div`
-  margin-top: 5px;
   display: flex;
   flex-direction: column;
   align-items: left;
@@ -73,15 +63,17 @@ export const UserData = styled.div`
   margin-right: 5px;
 `;
 
-export const UserInputLabel = styled.label``;
+export const UserInputLabel = styled.label`
+  font-size: 1.3rem;
+`;
 export const UserInput = styled.input`
-  width: 11rem;
+  width: 14rem;
   border: none;
   border-bottom: 1px solid ${Color.gray};
 
   &:focus {
     outline: none;
-    border-bottom: 2px solid #cfb991;
+    border-bottom: 2px solid ${Color.lightgold};
   }
 `;
 export const SubmitBtn = styled.button`
@@ -90,16 +82,14 @@ export const SubmitBtn = styled.button`
   background-color: white;
   border-radius: 15px;
   margin-top: 5px;
-  border: 2px solid #cfb991;
-  box-shadow: 1px 2px 0 rgb(0, 0, 0, 0.5);
+  border: 2px solid ${Color.lightgold};
 
   &:hover {
-    background-color: #cfb991;
+    background-color: ${Color.lightgold};
     cursor: pointer;
   }
 
   &:active {
-    box-shadow: 1px 1px 0 rgb(0, 0, 0, 0.5);
     position: relative;
     top: 2px;
   }

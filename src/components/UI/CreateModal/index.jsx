@@ -73,46 +73,42 @@ function CreateModal({ closeModal }) {
   return (
     <ModalContainer closeModal={closeModal}>
       <Style.Container>
-        <Style.Form name="user-data" method="post">
-          <Style.FileContainer>{getPreview()}</Style.FileContainer>
-          <Style.FileInput id="upload-file" type="file" accept="image/*, video/*" multiple onChange={uploadFile} />
-          <Style.UploadBtn htmlFor="upload-file">Select a file</Style.UploadBtn>
-          <Style.InputContainer>
-            <Style.UserData>
-              <Style.UserInputLabel htmlFor="date">Date</Style.UserInputLabel>
-              <Style.UserInput
-                type="date"
-                id="date"
-                name="date"
-                value={userData.date}
-                onChange={(e) => {
-                  inputData(e, 'date');
-                }}
-              />
-            </Style.UserData>
-            <Style.UserData>
-              <Style.UserInputLabel htmlFor="lng">Longitude</Style.UserInputLabel>
-              <Style.UserInput
-                type="number"
-                id="lng"
-                name="lng"
-                value={userData.lng}
-                onChange={(e) => inputData(e, 'lng')}
-              />
-            </Style.UserData>
-            <Style.UserData>
-              <Style.UserInputLabel htmlFor="lat">Latitude</Style.UserInputLabel>
-              <Style.UserInput
-                type="number"
-                id="lat"
-                name="lat"
-                value={userData.lat}
-                onChange={(e) => inputData(e, 'lat')}
-              />
-            </Style.UserData>
-          </Style.InputContainer>
-          <Style.SubmitBtn onClick={createDataset}>Submit</Style.SubmitBtn>
-        </Style.Form>
+        <Style.FileContainer>{getPreview()}</Style.FileContainer>
+        <Style.FileInput id="upload-file" type="file" accept="image/*, video/*" multiple onChange={uploadFile} />
+        <Style.UploadBtn htmlFor="upload-file">Select a file</Style.UploadBtn>
+        <Style.InputContainer>
+          <Style.UserData>
+            <Style.UserInputLabel htmlFor="date">Date</Style.UserInputLabel>
+            <Style.UserInput
+              type="date"
+              id="date"
+              name="date"
+              value={userData.date}
+              onChange={(e) => inputData(e, 'date')}
+            />
+          </Style.UserData>
+          <Style.UserData>
+            <Style.UserInputLabel htmlFor="lng">Longitude</Style.UserInputLabel>
+            <Style.UserInput
+              type="number"
+              id="lng"
+              name="lng"
+              value={userData.lng}
+              onChange={(e) => inputData(e, 'lng')}
+            />
+          </Style.UserData>
+          <Style.UserData>
+            <Style.UserInputLabel htmlFor="lat">Latitude</Style.UserInputLabel>
+            <Style.UserInput
+              type="number"
+              id="lat"
+              name="lat"
+              value={userData.lat}
+              onChange={(e) => inputData(e, 'lat')}
+            />
+          </Style.UserData>
+        </Style.InputContainer>
+        <Style.SubmitBtn onClick={createDataset}>Submit</Style.SubmitBtn>
       </Style.Container>
     </ModalContainer>
   );
