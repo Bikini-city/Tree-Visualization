@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Map from '../../components/UI/Map';
-import CreateModal from '../../components/UI/CreateModal'
 
 import Icon from '../../components/UI/Icon';
 import { getDatas } from '../../api/data';
 import * as Style from './styled';
 import * as Color from '../../style/color';
 import MarkerModal from '../../components/UI/MarkerModal';
+import CreateModal from '../../components/UI/CreateModal';
 
 function Main() {
   const [dataset, setDataset] = useState([{ id: 1, lng: -86.89871737888747, lat: 40.41866254968954, src: '' }]);
