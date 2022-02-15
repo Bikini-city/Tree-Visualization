@@ -20,7 +20,7 @@ export const getDatas = async () => {
 
 export const createDatas = async ({ dataset, date, lat, lng }) => {
   const response = await axios({
-    url: '/datas',
+    url: '/datas/uploads',
     method: 'POST',
     data: {
       dataset,
@@ -39,7 +39,6 @@ export const deleteDatas = async ({ dataId }) => {
     method: 'DELETE',
   });
 
-  console.log(response.data);
   return response.data;
 };
 
