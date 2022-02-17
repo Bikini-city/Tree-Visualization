@@ -6,10 +6,10 @@ import { getDatas } from '../../api/data';
 import DateButton from '../../components/UI/DateButton';
 import * as Style from './styled';
 import * as Color from '../../style/color';
-import { chartDummyData, graphDummyData, dd } from '../../common/data';
+import { dd } from '../../common/data';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import { makeDataToChartFormat, makeDataToGraphFormat } from '../../utils/data';
+import { parseData } from '../../utils/data';
 
 const DATA_DEPTH = 3;
 const ARC_CHART_SIZE = 430;
@@ -27,6 +27,12 @@ function Statistics() {
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
   const [range, setRange] = useState(3);
+  const { chartFormatData, graphFormatData } = parseData(
+    dd, // FIXME: dd를 실제 데이터로 변경
+    new Date('2020-01-01'),
+    new Date('2020-04-12'),
+    30,
+  );
 
   const initDataset = async () => {
     const datasetFromServer = await getDatas();
@@ -35,18 +41,11 @@ function Statistics() {
 
   useEffect(() => {
     if (svg.current) {
-      // FIXME: dd를 실제 데이터로 변경
-      svg.current.appendChild(
-        makePieChart(
-          makeDataToChartFormat(dd, new Date('2020-01-01'), new Date('2020-04-12'), 30),
-          DATA_DEPTH,
-          ARC_CHART_SIZE,
-        ),
-      );
+      svg.current.appendChild(makePieChart(chartFormatData, DATA_DEPTH, ARC_CHART_SIZE));
     }
 
     initDataset();
-  }, []);
+  }, [chartFormatData]);
 
   const changeFromDate = (date) => {
     setFromDate(date);
@@ -82,7 +81,7 @@ function Statistics() {
         <LineChart
           width={800}
           height={300}
-          data={makeDataToGraphFormat(dd, new Date('2020-01-01'), new Date('2020-04-12'), 30)}
+          data={graphFormatData}
           margin={{
             top: 5,
             right: 30,
