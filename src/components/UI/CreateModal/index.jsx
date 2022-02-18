@@ -19,11 +19,10 @@ function CreateModal({ closeModal }) {
     e.stopPropagation();
     const reader = new FileReader();
     const file = e.target.files[0];
-    const fileList = Array.from(e.target.files);
 
     reader.onloadend = () => {
       setUserFile({
-        file: fileList,
+        file,
         previewURL: reader.result,
       });
     };
@@ -59,15 +58,12 @@ function CreateModal({ closeModal }) {
   // -86 40
   const createDataset = () => {
     const formData = new FormData();
-    formData.append('dataset', userFile.file[0]);
+    formData.append('src', userFile.file);
+    formData.append('date', userData.date);
+    formData.append('lat', userData.lat);
+    formData.append('lng', userData.lng);
 
-    const postData = {
-      dataset: formData,
-      date: userData.date,
-      lat: userData.lat,
-      lng: userData.lng,
-    };
-    createDatas(postData);
+    createDatas(formData);
   };
 
   return (
