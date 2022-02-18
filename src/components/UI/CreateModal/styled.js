@@ -40,13 +40,13 @@ export const FileInput = styled.input`
 `;
 
 export const ImgFile = styled.img`
-  width: 37rem;
-  height: 21rem;
+  width: 45rem;
+  height: 25rem;
 `;
 
 export const VideoFile = styled.video`
-  width: 37rem;
-  height: 21rem;
+  width: 45rem;
+  height: 25rem;
 `;
 
 export const InputContainer = styled.div`

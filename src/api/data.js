@@ -18,15 +18,13 @@ export const getDatas = async () => {
   return response.data;
 };
 
-export const createDatas = async ({ dataset, date, lat, lng }) => {
+export const createDatas = async (formData) => {
   const response = await axios({
     url: '/datas/uploads',
     method: 'POST',
-    data: {
-      dataset,
-      date,
-      lat,
-      lng,
+    data: formData,
+    headers: {
+      'Content-Type': 'multipart/form-data',
     },
   });
 
