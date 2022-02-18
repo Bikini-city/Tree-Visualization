@@ -5,7 +5,7 @@ import { createDatas } from '../../../api/data';
 
 function CreateModal({ closeModal, createDataset }) {
   const [userFile, setUserFile] = useState({
-    file: [],
+    file: null,
     previewURL: '',
   });
 
@@ -40,19 +40,15 @@ function CreateModal({ closeModal, createDataset }) {
   };
 
   const getPreview = () => {
-    if (!userFile.file[0]) return <></>;
-    const fileExt = userFile.file[0].name.split('.').pop().toLowerCase();
-    const extList = ['mp4', 'jpg', 'png', 'jpeg'];
-    let preview = null;
+    if (!userFile.file) return <></>;
 
-    if (userFile.file.length !== 0 && extList.includes(fileExt)) {
-      preview = userFile.file[0].type.includes('image/') ? (
-        <Style.ImgFile name="dataset" src={userFile.previewURL} />
-      ) : (
-        <Style.VideoFile name="dataset" src={userFile.previewURL} controls />
-      );
-    }
-    return preview;
+    const fileExt = userFile.file.name.split('.').pop().toLowerCase();
+    const extList = ['mp4', 'jpg', 'png', 'jpeg'];
+    if (!extList.includes(fileExt)) return <></>;
+
+    const isImage = userFile.file.type.includes('image/');
+    if (isImage) return <Style.ImgFile name="dataset" src={userFile.previewURL} />;
+    return <Style.VideoFile name="dataset" src={userFile.previewURL} controls />;
   };
 
   return (
