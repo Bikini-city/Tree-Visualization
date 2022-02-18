@@ -10,14 +10,16 @@ export const Container = styled.div`
   position: relative;
 `;
 
-export const ImgContainer = styled.div`
-  width: 100%;
-`;
-
 export const Img = styled.img`
-  width: 100%;
+  width: 40rem;
+  height: 25rem;
   object-fit: contain;
   background-color: #000;
+`;
+
+export const Video = styled.video`
+  width: 40rem;
+  height: 25rem;
 `;
 
 export const CloseButton = styled.button`
