@@ -1,7 +1,7 @@
 import * as Color from '../style/color';
 
 const getDateGap = (toDate, fromDate) => {
-  const diffTime = Math.abs(toDate - fromDate);
+  const diffTime = toDate - fromDate;
   const dateGap = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   return dateGap;
 };
@@ -35,8 +35,11 @@ export const parseData = (dataset, fromDate, toDate, gap) => {
   });
 
   dataset.forEach((data) => {
-    // TODO: 범위에 없는 애들 예외처리
     const gapOfDataAndFromDate = getDateGap(data.date, fromDate);
+    const gapOfDataAndToDate = getDateGap(data.date, toDate);
+    const isUnvalidData = gapOfDataAndFromDate < 0 || gapOfDataAndToDate > 0;
+    if (isUnvalidData) return;
+
     const index = Math.floor(gapOfDataAndFromDate / gap);
     treeInfos[index].broken += data.broken;
     treeInfos[index].down += data.down;
