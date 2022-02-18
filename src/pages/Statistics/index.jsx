@@ -20,18 +20,25 @@ const RANGE_MAPPINDG = {
   4: '6M',
   5: '1Y',
 };
+const PERIOD_MAPPING = {
+  1: 10,
+  2: 30,
+  3: 90,
+  4: 180,
+  5: 365,
+};
 
 function Statistics() {
   const svg = useRef(null);
   const [dataset, setDataset] = useState([]);
   const [fromDate, setFromDate] = useState(new Date());
   const [toDate, setToDate] = useState(new Date());
-  const [range, setRange] = useState(3);
+  const [range, setRange] = useState(2);
   const { chartFormatData, graphFormatData } = parseData(
-    dd, // FIXME: dd를 실제 데이터로 변경
+    dd, // FIXME: dd를 실제 데이터로 변경 (dataset)
     new Date('2020-01-01'),
     new Date('2020-04-12'),
-    30,
+    PERIOD_MAPPING[range],
   );
 
   const initDataset = async () => {
@@ -41,6 +48,7 @@ function Statistics() {
 
   useEffect(() => {
     if (svg.current) {
+      svg.current.innerHTML = '';
       svg.current.appendChild(makePieChart(chartFormatData, DATA_DEPTH, ARC_CHART_SIZE));
     }
 
@@ -94,8 +102,8 @@ function Statistics() {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Line type="monotone" dataKey="broken" stroke={Color.gold} activeDot={{ r: 8 }} />
-          <Line type="monotone" dataKey="down" stroke={Color.black} activeDot={{ r: 8 }} />
+          <Line type="monotone" strokeDasharray="5 7" dataKey="broken" stroke={Color.gold} activeDot={{ r: 8 }} />
+          <Line type="monotone" strokeDasharray="5 5" dataKey="down" stroke={Color.black} activeDot={{ r: 8 }} />
         </LineChart>
       </Style.GraphWrapper>
       <Style.ChartWrapper ref={svg} />
