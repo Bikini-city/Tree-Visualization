@@ -3,7 +3,7 @@ import ModalContainer from '../../Container/ModalContainer';
 import * as Style from './styled';
 import { createDatas } from '../../../api/data';
 
-function CreateModal({ closeModal }) {
+function CreateModal({ closeModal, createDataset }) {
   const [userFile, setUserFile] = useState({
     file: [],
     previewURL: '',
@@ -32,6 +32,13 @@ function CreateModal({ closeModal }) {
     }
   };
 
+  const inputData = (e, key) => {
+    setUserData({
+      ...userData,
+      [key]: e.target.value,
+    });
+  };
+
   const getPreview = () => {
     if (!userFile.file[0]) return <></>;
     const fileExt = userFile.file[0].name.split('.').pop().toLowerCase();
@@ -46,24 +53,6 @@ function CreateModal({ closeModal }) {
       );
     }
     return preview;
-  };
-
-  const inputData = (e, key) => {
-    setUserData({
-      ...userData,
-      [key]: e.target.value,
-    });
-  };
-
-  // -86 40
-  const createDataset = () => {
-    const formData = new FormData();
-    formData.append('src', userFile.file);
-    formData.append('date', userData.date);
-    formData.append('lat', userData.lat);
-    formData.append('lng', userData.lng);
-
-    createDatas(formData);
   };
 
   return (
