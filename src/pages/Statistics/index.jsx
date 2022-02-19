@@ -34,7 +34,7 @@ function Statistics() {
   const [fromDate, setFromDate] = useState(new Date(new Date().setMonth(new Date().getMonth() - 3)));
   const [toDate, setToDate] = useState(new Date());
   const [range, setRange] = useState(2);
-  const { chartFormatData, graphFormatData } = parseData(
+  const { chartFormatData, graphFormatData, countTreesData } = parseData(
     dd, // FIXME: dataset
     fromDate, // new Date('2020-01-01')
     toDate, // new Date('2020-04-01')
@@ -110,12 +110,12 @@ function Statistics() {
       <Style.CountWrapper>
         <Style.CountList>
           <Style.CountItem>
-            <Style.CountTitle>Fallen</Style.CountTitle>
-            <Style.CountValue>12</Style.CountValue>
+            <Style.CountTitle>Down</Style.CountTitle>
+            <Style.CountValue>{countTreesData.down}</Style.CountValue>
           </Style.CountItem>
           <Style.CountItem>
             <Style.CountTitle>Broken</Style.CountTitle>
-            <Style.CountValue>12</Style.CountValue>
+            <Style.CountValue>{countTreesData.broken}</Style.CountValue>
           </Style.CountItem>
         </Style.CountList>
       </Style.CountWrapper>
