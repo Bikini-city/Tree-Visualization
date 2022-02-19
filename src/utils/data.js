@@ -9,8 +9,9 @@ const getDateGap = (toDate, fromDate) => {
 export const parseData = (dataset, fromDate, toDate, gap) => {
   const chartFormatData = [];
   const graphFormatData = [];
+  const countTreesData = { broken: 0, down: 0 };
   const dateGap = getDateGap(toDate, fromDate);
-  if (dateGap < gap) return { chartFormatData, graphFormatData };
+  if (dateGap < gap) return { chartFormatData, graphFormatData, countTreesData };
 
   const treeInfos = []; // 각 날짜에 해당하는 나무들 저장
   const innerCount = Math.ceil(dateGap / gap);
@@ -45,6 +46,8 @@ export const parseData = (dataset, fromDate, toDate, gap) => {
     treeInfos[index].down += data.down;
     graphFormatData[index].broken += data.broken;
     graphFormatData[index].down += data.down;
+    countTreesData.broken += data.broken;
+    countTreesData.down += data.down;
   });
 
   treeInfos.forEach((info, index) => {
@@ -54,5 +57,5 @@ export const parseData = (dataset, fromDate, toDate, gap) => {
     chartFormatData[index].data[1].percentage = Math.floor((info.down / (info.broken + info.down)) * 100); // down tree
   });
 
-  return { chartFormatData, graphFormatData };
+  return { chartFormatData, graphFormatData, countTreesData };
 };
