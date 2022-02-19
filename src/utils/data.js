@@ -7,11 +7,11 @@ const getDateGap = (toDate, fromDate) => {
 };
 
 export const parseData = (dataset, fromDate, toDate, gap) => {
-  const dateGap = getDateGap(toDate, fromDate);
-  if (dateGap < gap) return [];
-
   const chartFormatData = [];
   const graphFormatData = [];
+  const dateGap = getDateGap(toDate, fromDate);
+  if (dateGap < gap) return { chartFormatData, graphFormatData };
+
   const treeInfos = []; // 각 날짜에 해당하는 나무들 저장
   const innerCount = Math.ceil(dateGap / gap);
 
