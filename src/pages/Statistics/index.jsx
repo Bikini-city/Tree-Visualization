@@ -31,13 +31,13 @@ const PERIOD_MAPPING = {
 function Statistics() {
   const svg = useRef(null);
   const [dataset, setDataset] = useState([]);
-  const [fromDate, setFromDate] = useState(new Date());
+  const [fromDate, setFromDate] = useState(new Date(new Date().setMonth(new Date().getMonth() - 3)));
   const [toDate, setToDate] = useState(new Date());
   const [range, setRange] = useState(2);
   const { chartFormatData, graphFormatData } = parseData(
-    dd, // FIXME: dd를 실제 데이터로 변경 (dataset)
-    new Date('2020-01-01'),
-    new Date('2020-04-12'),
+    dd, // FIXME: dataset
+    fromDate, // new Date('2020-01-01')
+    toDate, // new Date('2020-04-01')
     PERIOD_MAPPING[range],
   );
 
