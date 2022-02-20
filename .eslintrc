@@ -11,7 +11,7 @@
     "plugin:prettier/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["**/*.test.jsx"],
+  "ignorePatterns": ["**/*.test.jsx", "**/*.test.js"],
   "rules": {
     "no-unused-vars": 0,
     "import/namespace": 0,
