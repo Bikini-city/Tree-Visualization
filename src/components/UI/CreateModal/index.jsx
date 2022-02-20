@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import ModalContainer from '../../Container/ModalContainer';
 import * as Style from './styled';
-import { createDatas } from '../../../api/data';
 
 function CreateModal({ closeModal, createDataset }) {
   const [userFile, setUserFile] = useState({
