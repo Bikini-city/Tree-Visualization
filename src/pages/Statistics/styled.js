@@ -92,6 +92,10 @@ export const GraphWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  svg {
+    font-size: 1.5rem;
+  }
 `;
 
 export const ChartWrapper = styled.div`
