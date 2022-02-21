@@ -13,13 +13,6 @@ import { parseData } from '../../utils/data';
 
 const DATA_DEPTH = 3;
 const ARC_CHART_SIZE = 430;
-const RANGE_MAPPINDG = {
-  1: '10D',
-  2: '1M',
-  3: '3M',
-  4: '6M',
-  5: '1Y',
-};
 const PERIOD_MAPPING = {
   1: 10,
   2: 30,
@@ -31,13 +24,13 @@ const PERIOD_MAPPING = {
 function Statistics() {
   const svg = useRef(null);
   const [dataset, setDataset] = useState([]);
-  const [fromDate, setFromDate] = useState(new Date(new Date().setMonth(new Date().getMonth() - 3)));
+  const [fromDate, setFromDate] = useState(new Date(new Date().setMonth(new Date().getMonth() - 6)));
   const [toDate, setToDate] = useState(new Date());
   const [range, setRange] = useState(2);
   const { chartFormatData, graphFormatData, countTreesData } = parseData(
-    dd, // FIXME: dataset
-    fromDate, // new Date('2020-01-01')
-    toDate, // new Date('2020-04-01')
+    dataset,
+    fromDate,
+    toDate,
     PERIOD_MAPPING[range],
   );
 
@@ -84,7 +77,7 @@ function Statistics() {
       <Style.GraphWrapper>
         <Style.RangeWrapper>
           <Style.RangeInput type="range" min={1} max={5} value={range} onChange={(e) => setRange(e.target.value)} />
-          <Style.RangeText>{RANGE_MAPPINDG[range]}</Style.RangeText>
+          <Style.RangeText>{`${PERIOD_MAPPING[range]}D`}</Style.RangeText>
         </Style.RangeWrapper>
         <LineChart
           width={800}
