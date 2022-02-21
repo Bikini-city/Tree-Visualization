@@ -20,7 +20,7 @@ export const parseData = (dataset, fromDate, toDate, gap) => {
     treeInfos.push({ broken: 0, down: 0 });
     chartFormatData.push({
       name: `${index}`,
-      percentage: 100 / innerCount,
+      percentage: (100 / innerCount).toFixed(2),
       color: Color.gray,
       textColor: Color.black,
       data: [
