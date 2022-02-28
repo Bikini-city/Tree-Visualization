@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Map from '../../components/UI/Map';
 
 import Icon from '../../components/UI/Icon';
-import { getDatas, createDatas } from '../../api/data';
+import { getDatas, createDatas, deleteDatas } from '../../api/data';
 import * as Style from './styled';
 import * as Color from '../../style/color';
 import MarkerModal from '../../components/UI/MarkerModal';
@@ -43,11 +43,19 @@ function Main() {
 
     const data = await createDatas(formData);
     setDataset([...dataset, data]);
+    setCreateModalOpen(false);
+  };
+
+  const deleteDataset = async ({ dataId }) => {
+    await deleteDatas({ dataId });
+    const filteredDataset = dataset.filter((data) => data.id !== dataId);
+    setDataset(filteredDataset);
+    setSelectedData(null);
   };
 
   return (
     <Style.Container>
-      {selectedData && <MarkerModal data={selectedData} closeModal={closeModal} />}
+      {selectedData && <MarkerModal data={selectedData} closeModal={closeModal} deleteDataset={deleteDataset} />}
       {createModalOpen && <CreateModal closeModal={closeModal} createDataset={createDataset} />}
       <Map getMap={setMap} markers={dataset} onClickMarker={onClickMarker} />
       <Style.AddButton onClick={() => setCreateModalOpen(!createModalOpen)}>
