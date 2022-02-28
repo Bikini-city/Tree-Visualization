@@ -3,8 +3,8 @@ import ReactMapGL from 'react-map-gl';
 import Marker from './Marker';
 import * as Style from './styled';
 
-const LNG = -86.89871737888747;
-const LAT = 40.41866254968954;
+const LNG = -86.99968; // -86.89871737888747;
+const LAT = 40.22254; // 40.41866254968954;
 const ZOOM = 12;
 
 function Map({ children, getMap, markers, onClickMarker }) {
