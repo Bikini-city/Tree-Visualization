@@ -36,8 +36,8 @@ export const parseData = (dataset, fromDate, toDate, gap) => {
   });
 
   dataset.forEach((data) => {
-    const gapOfDataAndFromDate = getDateGap(data.date, fromDate);
-    const gapOfDataAndToDate = getDateGap(data.date, toDate);
+    const gapOfDataAndFromDate = getDateGap(new Date(data.date), fromDate);
+    const gapOfDataAndToDate = getDateGap(new Date(data.date), toDate);
     const isUnvalidData = gapOfDataAndFromDate < 0 || gapOfDataAndToDate > 0;
     if (isUnvalidData) return;
 
