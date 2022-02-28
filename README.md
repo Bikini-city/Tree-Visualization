@@ -2,6 +2,13 @@
 
 > Visulization of Detection of Fallen tree based on UAV using YOLOX
 
+### Quick Start
+
+    $ touch .env
+    Write .env file according to .env.template
+    $ npm install
+    $ npm run dev
+
 ### Techs
 
 - react
