@@ -13,6 +13,7 @@ function CreateModal({ closeModal, createDataset }) {
     lng: 0,
     lat: 0,
   });
+  const [loading, setLoading] = useState(false);
 
   const uploadFile = (e) => {
     e.stopPropagation();
@@ -48,6 +49,12 @@ function CreateModal({ closeModal, createDataset }) {
     const isImage = userFile.file.type.includes('image/');
     if (isImage) return <Style.ImgFile name="dataset" src={userFile.previewURL} />;
     return <Style.VideoFile name="dataset" src={userFile.previewURL} controls />;
+  };
+
+  const handleCreateDataset = async () => {
+    setLoading(true);
+    await createDataset({ src: userFile.file, date: userData.date, lng: userData.lng, lat: userData.lat });
+    setLoading(false);
   };
 
   return (
@@ -88,7 +95,8 @@ function CreateModal({ closeModal, createDataset }) {
             />
           </Style.UserData>
         </Style.InputContainer>
-        <Style.SubmitBtn onClick={createDataset}>Submit</Style.SubmitBtn>
+        <Style.SubmitBtn onClick={handleCreateDataset}>Submit</Style.SubmitBtn>
+        {loading && <Style.Loading>Loading</Style.Loading>}
       </Style.Container>
     </ModalContainer>
   );

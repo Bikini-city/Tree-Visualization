@@ -12,6 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 `;
 
 export const FileContainer = styled.div`
@@ -93,4 +94,14 @@ export const SubmitBtn = styled.button`
     position: relative;
     top: 2px;
   }
+`;
+
+export const Loading = styled.span`
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: ${Color.gold};
+  font-weight: bold;
+  font-size: 1.8rem;
 `;
