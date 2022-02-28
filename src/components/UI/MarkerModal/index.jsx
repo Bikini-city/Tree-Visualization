@@ -13,11 +13,7 @@ function MarkerModal({ data, closeModal, deleteDataset }) {
         <Icon icon="close" />
       </Style.CloseButton>
       <Style.Container>
-        {isInclude.length ? (
-          <Style.Img src="https://i.imgur.com/rGdDpqd.jpg" />
-        ) : (
-          <Style.Video src={data.src} controls />
-        )}
+        {isInclude.length ? <Style.Img src={data.src} /> : <Style.Video src={data.src} controls />}
         <Style.Species>
           Broken:
           <Style.Count> {data.broken}</Style.Count>
